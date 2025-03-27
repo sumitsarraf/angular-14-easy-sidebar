@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My App</a>
+    
+    <div class="d-flex align-items-center">
+      <ng-container *ngIf="showAnalyticsButton">
+        <button class="btn btn-outline-light me-2" routerLink="/analytics">
+          <i class="bx bx-pie-chart-alt-2"></i> Analytics
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="showSettingsButton">
+        <button class="btn btn-outline-light me-2" routerLink="/setting">
+          <i class="bx bx-cog"></i> Settings
+        </button>
+      </ng-container>
+
+      <div class="dropdown" *ngIf="userProfile.isLoggedIn">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bx bx-user"></i> {{userProfile.name}}
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" href="#"><i class="bx bx-user-circle"></i> Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#" (click)="logout()"><i class="bx bx-log-out"></i> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
