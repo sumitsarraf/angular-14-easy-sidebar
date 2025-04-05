@@ -27,7 +27,7 @@ git clone <repository-url>
 
 2. Navigate to the project directory:
 ```bash
-cd angular-admin-dashboard
+cd angular-14-easy-sidebar
 ```
 
 3. Install dependencies:
