@@ -1,4 +1,4 @@
-# Angular Admin Dashboard
+# Angular 14 Easy Sidebar
 
 A modern admin dashboard built with Angular 14, featuring a responsive sidebar navigation, authentication system, and a beautiful UI design.
 
