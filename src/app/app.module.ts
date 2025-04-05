@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing.module';
-import { CommonModule } from '@angular/common';
 
+import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './views/default.component';
 import { DashboardComponent } from './views/dashboard.component';
 import { HTML_n_CSSComponent } from './views/category/html-n-css.component';
@@ -24,36 +25,34 @@ import { ExploreComponent } from './views/explore.component';
 import { HistoryComponent } from './views/history.component';
 import { SettingComponent } from './views/setting.component';
 
-import { HeaderComponent } from './views/header/header.component'; 
-
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
-    DefaultComponent,
-    DashboardComponent,
-    HTML_n_CSSComponent,
-    JavascriptComponent,
-    PHP_n_MySQLComponent,
-    WebDesignComponent,
-    LoginFormComponent,
-    CardDesignComponent,
-    AnalyticsComponent,
-    ChartComponent,
-    UIFaceComponent,
-    PigmentsComponent,
-    BoxIconsComponent,
-    ExploreComponent,
-    HistoryComponent,
-    SettingComponent,
-    HeaderComponent,
+    LoginComponent,
+    DefaultComponent, 
+    DashboardComponent, 
+    HTML_n_CSSComponent, 
+    JavascriptComponent, 
+    PHP_n_MySQLComponent, 
+    WebDesignComponent, 
+    LoginFormComponent, 
+    CardDesignComponent, 
+    AnalyticsComponent, 
+    ChartComponent, 
+    UIFaceComponent, 
+    PigmentsComponent, 
+    BoxIconsComponent, 
+    ExploreComponent, 
+    HistoryComponent, 
+    SettingComponent  
   ],
-  imports: [
+  imports: [ 
     CommonModule,
-    BrowserModule,
-    FormsModule,
-    NgbModule, // For ng-bootstrap
-    AppRoutingModule,
+    BrowserModule, 
+    FormsModule, 
+    NgbModule,
+    AppRoutingModule
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule {}
+export class AppModule { }

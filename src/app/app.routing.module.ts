@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
+import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './views/default.component';
 import { DashboardComponent } from './views/dashboard.component';
 import { HTML_n_CSSComponent } from './views/category/html-n-css.component';
@@ -19,23 +21,24 @@ import { HistoryComponent } from './views/history.component';
 import { SettingComponent } from './views/setting.component';
 
 const routes: Routes = [
-  { path: '', component: DefaultComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'html-n-css', component: HTML_n_CSSComponent },
-  { path: 'javascript', component: JavascriptComponent },
-  { path: 'php-n-mysql', component: PHP_n_MySQLComponent },
-  { path: 'posts/web-design', component: WebDesignComponent },
-  { path: 'posts/login-form', component: LoginFormComponent },
-  { path: 'posts/card-design', component: CardDesignComponent },
-  { path: 'analytics', component: AnalyticsComponent },
-  { path: 'chart', component: ChartComponent },
-  { path: 'ui-face', component: UIFaceComponent },
-  { path: 'pigments', component: PigmentsComponent },
-  { path: 'box-icons', component: BoxIconsComponent },
-  { path: 'explore', component: ExploreComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'setting', component: SettingComponent },
-  { path: '**', redirectTo: '' }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'html-n-css', component: HTML_n_CSSComponent, canActivate: [AuthGuard] },
+  { path: 'javascript', component: JavascriptComponent, canActivate: [AuthGuard] },
+  { path: 'php-n-mysql', component: PHP_n_MySQLComponent, canActivate: [AuthGuard] },
+  { path: 'posts/web-design', component: WebDesignComponent, canActivate: [AuthGuard] },
+  { path: 'posts/login-form', component: LoginFormComponent, canActivate: [AuthGuard] },
+  { path: 'posts/card-design', component: CardDesignComponent, canActivate: [AuthGuard] },
+  { path: 'analytics', component: AnalyticsComponent, canActivate: [AuthGuard] },
+  { path: 'chart', component: ChartComponent, canActivate: [AuthGuard] },
+  { path: 'ui-face', component: UIFaceComponent, canActivate: [AuthGuard] },
+  { path: 'pigments', component: PigmentsComponent, canActivate: [AuthGuard] },
+  { path: 'box-icons', component: BoxIconsComponent, canActivate: [AuthGuard] },
+  { path: 'explore', component: ExploreComponent, canActivate: [AuthGuard] },
+  { path: 'history', component: HistoryComponent, canActivate: [AuthGuard] },
+  { path: 'setting', component: SettingComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({

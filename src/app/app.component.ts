@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from './auth/auth.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'my-app',
@@ -6,13 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent implements OnInit {
-showSettingsButton: any;
-showAnalyticsButton: any;
-logout() {
-throw new Error('Method not implemented.');
-}
-
-  openSidebar: boolean = false;
+  openSidebar: boolean = true;
+  showSidebar: boolean = false;
+  isLoginPage: boolean = true;
 
   menuSidebar = [
     {
@@ -94,16 +93,27 @@ throw new Error('Method not implemented.');
       icon: "bx bx-cog",
       sub_menu: []
     }
-  ]
-userProfile: any;
+  ];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      this.isLoginPage = event.url === '/login' || event.url === '/';
+      this.showSidebar = this.authService.isLoggedIn() && !this.isLoginPage;
+    });
   }
 
   showSubmenu(itemEl: HTMLElement) {
     itemEl.classList.toggle("showMenu");
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
